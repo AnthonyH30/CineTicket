@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name": "Romance",
+        "icon": "😍"
+    },
+    {
+        "id": "2",
+        "name": "Action",
+        "icon": "🏃🏻"
+    },
+    {
+        "id": "3",
+        "name": "Horror",
+        "icon": "😱"
+    },
+    {
+        "id": "4",
+        "name": "Comedy",
+        "icon": "😂"
+    },
+    {
+        "id": "5",
+        "name": "Adventure",
+        "icon": "🤩"
+    },
+    {
+        "id": "6",
+        "name": "Fantasy",
+        "icon": "🧙‍♂️"
+    }
+]
