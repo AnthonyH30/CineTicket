@@ -5,21 +5,23 @@ import { styles } from './styles';
 
 export default function Categories() {
   return (
-    <FlatList
-        data={CategoriesData}
-        keyExtractor={(item) => String(item.id)}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => {
-            return(
-                <TouchableOpacity style={styles.categoryContainer}>
-                    <View style={styles.iconBox}>
-                        <Text style={styles.icon}>{item.icon}</Text>
-                    </View>
-                    <Text style={styles.text}>{item.name}</Text>
-                </TouchableOpacity>
-            )
-        }}
-    />
+    <View>
+        <FlatList
+            data={CategoriesData}
+            keyExtractor={(item) => String(item.id)}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item}) => {
+                return(
+                    <TouchableOpacity style={styles.categoryContainer}>
+                        <View style={styles.iconBox}>
+                            <Text style={styles.icon}>{item.icon}</Text>
+                        </View>
+                        <Text style={styles.text}>{item.name}</Text>
+                    </TouchableOpacity>
+                )
+            }}
+        />
+    </View>
   )
 }

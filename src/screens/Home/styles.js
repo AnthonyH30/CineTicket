@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     height: 50,
     backgroundColor: '#18181a',
     marginVertical: 30,
-    paddingLeft: 15,
+    paddingLeft: 20,
     fontSize: 20,
     color: 'white',
     borderRadius: 23

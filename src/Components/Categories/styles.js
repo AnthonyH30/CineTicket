@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 20,
         marginTop: 20,
-        height: 75
   },
   iconBox: {
     height: 50,
