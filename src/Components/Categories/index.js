@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { TicketContext } from '../../context/TicketContext';
 import CategoriesData from '../../Data/CategoriesData.json';
 import { styles } from './styles';
 
 export default function Categories() {
+
+    const { selectedCategory, setSelectedCategory } = useContext(TicketContext);
+
   return (
     <View>
         <FlatList
@@ -11,13 +15,13 @@ export default function Categories() {
             keyExtractor={(item) => String(item.id)}
             horizontal
             showsHorizontalScrollIndicator={false}
-            renderItem={({item}) => {
+            renderItem={({item, index}) => {
                 return(
-                    <TouchableOpacity style={styles.categoryContainer}>
-                        <View style={styles.iconBox}>
+                    <TouchableOpacity onPress={() => setSelectedCategory(item.name)} style={[styles.categoryContainer, index === 0 ? {marginLeft: 24} : {}]}>
+                        <View style={[styles.iconBox, selectedCategory === item.name ? {backgroundColor: 'gray'} : {}]}>
                             <Text style={styles.icon}>{item.icon}</Text>
                         </View>
-                        <Text style={styles.text}>{item.name}</Text>
+                        <Text style={[styles.text, selectedCategory === item.name ? {color: 'white'} : {}]}>{item.name}</Text>
                     </TouchableOpacity>
                 )
             }}

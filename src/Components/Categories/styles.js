@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   iconBox: {
     height: 50,
     width: 55,
-    borderRadius: 8,
+    borderRadius: 10,
     backgroundColor: '#18181a',
     alignItems: 'center',
     justifyContent: 'center'
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     fontSize: 20
   },
   text: {
-    color: 'white',
+    color: 'gray',
     fontWeight: '600',
     fontSize: 15,
     marginTop: 5

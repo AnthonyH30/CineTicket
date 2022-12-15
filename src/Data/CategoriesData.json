@@ -1,5 +1,10 @@
 [
     {
+        "id": "0",
+        "name": "All",
+        "icon": "🌟"
+    },
+    {
         "id": "1",
         "name": "Romance",
         "icon": "😍"

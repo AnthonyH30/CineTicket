@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const { height, width } = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 24,
-    marginTop: 40
+    backgroundColor: "#151518",
   },
   searchInput: {
     height: 50,
@@ -13,7 +14,16 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     fontSize: 20,
     color: 'white',
-    borderRadius: 23
+    borderRadius: 23,
+    marginLeft: 24
   },
-  
+  card: {
+    margin: 24,
+    marginTop: 40
+  },
+  cardImage: {
+    height: height / 2.2,
+    width: width - width / 2.2,
+    borderRadius: 20
+  }
 });

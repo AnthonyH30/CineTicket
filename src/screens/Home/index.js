@@ -1,27 +1,30 @@
-import { View, SafeAreaView, TextInput, FlatList, Text, Image, TouchableOpacity } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { View, SafeAreaView, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import Title from '../../Components/Title'
 import { StatusBar } from 'expo-status-bar';
 import Categories from '../../Components/Categories';
+import { TicketContext } from '../../context/TicketContext';
 import axios from 'axios';
-import API_LINK from '../../Data/API_Data';
 
-export default function Home() {
-  const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=a7c113a3ac789f97bba5838bcc13852a&language=en-US&page=1').then((response) => {
-      setMovies(response.data.results)}).catch(error => console.log(error));
-  },[])
+export default function Home({navigation}) {
+  const { movies, setDetailMovie, detailMovie } = useContext(TicketContext);
+
+  const movieDetails = (item) => {
+    navigation.navigate('Details')
+    axios.get(`https://api.themoviedb.org/3/movie/${item.id}?api_key=a7c113a3ac789f97bba5838bcc13852a&language=en-US`).then((response) => {
+      setDetailMovie(response.data)}).catch(error => console.log(error));
+    console.log(detailMovie)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar style='light'/>
-        <Title style={{marginTop: 20}} text='Choose a movie and enjoy!' />
-        <TextInput placeholderTextColor={'gray'} placeholder='Search' style={styles.searchInput} />
+        <Title style={{marginTop: 30, marginLeft: 24}} text='Choose a movie and enjoy!' />
+        <TextInput placeholderTextColor={'gray'} placeholder='Search' style={[styles.searchInput, {marginHorizontal: 24}]} />
         <View>
-            <Title text='Category' style={{fontWeight: '700'}} />
+            <Title text='Category' style={{fontWeight: '700', marginLeft: 24}} />
         </View>
         <Categories />
         <FlatList
@@ -29,8 +32,8 @@ export default function Home() {
           keyExtractor={(item) => String(item.id)}
           horizontal
           renderItem={({item}) => (
-            <TouchableOpacity style={{margin: 20}}>
-              <Image style={{width: 200, height: 300, borderRadius: 20}} source={{uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}`}}/>
+            <TouchableOpacity onPress={() => movieDetails(item)} style={styles.card}>
+              <Image style={styles.cardImage} source={{uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}`}}/>
             </TouchableOpacity>
           )}
         />
