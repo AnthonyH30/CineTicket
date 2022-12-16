@@ -17,11 +17,11 @@ export default function Categories() {
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => {
                 return(
-                    <TouchableOpacity onPress={() => setSelectedCategory(item.name)} style={[styles.categoryContainer, index === 0 ? {marginLeft: 24} : {}]}>
-                        <View style={[styles.iconBox, selectedCategory === item.name ? {backgroundColor: 'gray'} : {}]}>
+                    <TouchableOpacity onPress={() => setSelectedCategory(item)} style={[styles.categoryContainer, index === 0 ? {marginLeft: 24} : {}]}>
+                        <View style={[styles.iconBox, selectedCategory.name === item.name ? {backgroundColor: 'gray'} : {}]}>
                             <Text style={styles.icon}>{item.icon}</Text>
                         </View>
-                        <Text style={[styles.text, selectedCategory === item.name ? {color: 'white'} : {}]}>{item.name}</Text>
+                        <Text style={[styles.text, selectedCategory.name === item.name ? {color: 'white'} : {}]}>{item.name}</Text>
                     </TouchableOpacity>
                 )
             }}

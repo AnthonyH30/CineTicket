@@ -2,36 +2,43 @@
     {
         "id": "0",
         "name": "All",
-        "icon": "🌟"
-    },
-    {
-        "id": "1",
-        "name": "Romance",
-        "icon": "😍"
+        "icon": "🌟",
+        "categoryId": 1
     },
     {
         "id": "2",
         "name": "Action",
-        "icon": "🏃🏻"
+        "icon": "🏎",
+        "categoryId": 28
     },
     {
         "id": "3",
         "name": "Horror",
-        "icon": "😱"
+        "icon": "😱",
+        "categoryId": 27
     },
     {
         "id": "4",
         "name": "Comedy",
-        "icon": "😂"
+        "icon": "😂",
+        "categoryId": 35
     },
     {
         "id": "5",
         "name": "Adventure",
-        "icon": "🤩"
+        "icon": "🤩",
+        "categoryId": 12
     },
     {
         "id": "6",
         "name": "Fantasy",
-        "icon": "🧙‍♂️"
+        "icon": "🧙‍♂️",
+        "categoryId": 14
+    },
+    {
+        "id": "1",
+        "name": "Romance",
+        "icon": "😍",
+        "categoryId": 10749
     }
 ]

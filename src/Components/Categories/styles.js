@@ -12,7 +12,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#18181a',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderColor: 'gray',
+    borderWidth: 0.3
   },
   icon: {
     fontSize: 20
