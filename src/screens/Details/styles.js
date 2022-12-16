@@ -4,10 +4,9 @@ const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
-    padding: 24,
     paddingTop: 30,
     backgroundColor: '#151518',
-    flex: 1
+    flex: 1,
   },
   header: {
     flexDirection: 'row',
@@ -47,6 +46,27 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     lineHeight: 30,
-    fontWeight: '300'
+    fontWeight: '300',
+    marginBottom: 200
+  },
+  btnSection: {
+    height: 200,
+    width: width,
+    position: 'absolute',
+    bottom: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btn: {
+    backgroundColor: '#ffa500',
+    width: width / 1.9,
+    height: 50,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  btnText: {
+    fontWeight: '700',
+    fontSize: 13
   }
 });
