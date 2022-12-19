@@ -8,17 +8,6 @@ export const styles = StyleSheet.create({
     backgroundColor: '#151518',
     flex: 1,
   },
-  header: {
-    flexDirection: 'row',
-    marginVertical: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pageTitle: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600'
-  },
   infoView: {
     flexDirection: 'row',
     justifyContent: 'space-between'
@@ -47,15 +36,13 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 30,
     fontWeight: '300',
-    marginBottom: 200
   },
   btnSection: {
-    height: 200,
+    height: 50,
     width: width,
-    position: 'absolute',
-    bottom: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 50
   },
   btn: {
     backgroundColor: '#ffa500',

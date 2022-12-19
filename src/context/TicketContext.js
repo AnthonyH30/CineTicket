@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const TicketContext = createContext({});
 
-export default function TicketProvider({children, navigation}){
+export default function TicketProvider({children}){
     const [data, setData] = useState([])
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState('');
@@ -13,6 +13,7 @@ export default function TicketProvider({children, navigation}){
         "icon": "🌟",
         "categoryId": 1
     });
+    const [currentSelected, setCurrentSelected] = useState([])
     const [detailMovie, setDetailMovie] = useState({genres:[{name: "Action"}]});
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export default function TicketProvider({children, navigation}){
     },[search])
 
     return(
-        <TicketContext.Provider value={{movies, selectedCategory, setSelectedCategory, detailMovie, setDetailMovie, data, setSearch, search}}>
+        <TicketContext.Provider value={{movies, selectedCategory, setSelectedCategory, detailMovie, setDetailMovie, data, setSearch, search, setCurrentSelected, currentSelected}}>
             {children}
         </TicketContext.Provider>
     )

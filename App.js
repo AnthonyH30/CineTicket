@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import TicketProvider from './src/context/TicketContext';
 import Navigation from './src/Routes/Navigation';
 
