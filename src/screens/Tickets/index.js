@@ -1,4 +1,4 @@
-import { ScrollView, Image, View, Pressable, Dimensions, FlatList, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, Image, View, Pressable, Dimensions, FlatList, Text, TouchableOpacity, Touchable } from 'react-native';
 import React, { useContext } from 'react';
 import Header from '../../Components/Header'
 import { styles } from './styles';
@@ -6,13 +6,15 @@ import Seats from '../../Data/Seats.json';
 import TicketStatus from '../../Components/TicketStatus';
 import { TicketContext } from '../../context/TicketContext';
 import Title from '../../Components/Title';
-import Date from '../../Data/Date.json';
 
 const hours = ["12:00", "13:00", "14:00", "15:00", "16:00"]
 
 export default function Tickets() {
 
-  const { setCurrentSelected, currentSelected } = useContext(TicketContext);
+  const { setCurrentSelected, currentSelected, date, currentDate, setCurrentDate, session, setSession, price } = useContext(TicketContext);
+
+  const data = new Date;
+  const dia = data.getDate();
 
   const removeSeats = (seat) => {
     const filteredSeats = currentSelected.filter(list => list.id !== seat.id);
@@ -27,6 +29,12 @@ export default function Tickets() {
       setCurrentSelected([...currentSelected, seat])
     }
     
+  }
+
+  const handleDays = (item) =>{
+    if(item >= dia){
+      setCurrentDate(item)
+    }
   }
 
   return (
@@ -47,17 +55,17 @@ export default function Tickets() {
         <Title text='Select Date and Time' style={{fontSize: 17, alignSelf: 'center', marginVertical: 10}} />
         <View style={{paddingHorizontal: 24, marginBottom: 50}}>
           <FlatList
-            data={Date}
-            keyExtractor={(date) => String(date.day)}
+            data={date}
+            keyExtractor={(item) => String(item.day)}
             horizontal
-            renderItem={({date, index}) => {
+            renderItem={({item, index}) => {
               return(
-                <View style={styles.dateContainer}>
-                  <Text style={styles.textMonth}>Dec</Text>
+                <TouchableOpacity style={[styles.dateContainer, currentDate === item.day ? {backgroundColor: '#ffa500'} : {}, item.day < dia ? {opacity: 0.3} : {}]} onPress={() => handleDays(item.day)}>
+                  <Text style={styles.textMonth}>{item.month}</Text>
                   <View style={styles.circleDay}>
-                    <Text style={styles.textDay}>{index}</Text>
+                    <Text style={styles.textDay}>{item.day}</Text>
                   </View>
-              </View>
+                </TouchableOpacity>
               )
             }}
           />
@@ -66,15 +74,15 @@ export default function Tickets() {
             showsHorizontalScrollIndicator={false}
           >
             {hours.map( hour => (
-              <View key={hour} style={styles.hourContainer}>
-                <Text style={styles.textHour}>{hour}</Text>
-              </View>
+              <TouchableOpacity key={hour} style={[styles.hourContainer, session === hour ? {borderColor: '#ffa500'} : {}]} onPress={() => setSession(hour)}>
+                <Text style={[styles.textHour, session === hour ? {color: '#ffa500'} : {}]}>{hour}</Text>
+              </TouchableOpacity>
             ))}
           </ScrollView>
           <View style={styles.finishContainer}>
             <View style={styles.priceContainer}>
               <Text style={{color: 'white', fontWeight: '600', fontSize: 17}}>Total Price</Text>
-              <Text style={{color: 'white', fontWeight: '500', fontSize: 16}}>$32.16</Text>
+              <Text style={{color: 'white', fontWeight: '500', fontSize: 16}}>${price}</Text>
             </View>
             <TouchableOpacity style={styles.btn}>
               <Text style={styles.btnText}>Book Ticket</Text>
