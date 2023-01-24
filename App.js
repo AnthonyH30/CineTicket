@@ -1,10 +1,10 @@
 import TicketProvider from './src/context/TicketContext';
-import Navigation from './src/Routes/Navigation';
+import Navigates from './src/Routes';
 
 export default function App() {
   return (
     <TicketProvider>
-        <Navigation />
+        <Navigates />
     </TicketProvider>
   );
 }
