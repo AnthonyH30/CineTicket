@@ -11,7 +11,7 @@ const hours = ["12:00", "13:00", "14:00", "15:00", "16:00"]
 
 export default function Tickets() {
 
-  const { setCurrentSelected, currentSelected, date, currentDate, setCurrentDate, session, setSession, price } = useContext(TicketContext);
+  const { setCurrentSelected, currentSelected, date, currentDate, setCurrentDate, session, setSession, price, BuyTicket } = useContext(TicketContext);
 
   const data = new Date;
   const dia = data.getDate();
@@ -84,7 +84,7 @@ export default function Tickets() {
               <Text style={{color: 'white', fontWeight: '600', fontSize: 17}}>Total Price</Text>
               <Text style={{color: 'white', fontWeight: '500', fontSize: 16}}>${price}</Text>
             </View>
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={BuyTicket}>
               <Text style={styles.btnText}>Book Ticket</Text>
             </TouchableOpacity>
           </View>

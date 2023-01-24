@@ -175,6 +175,7 @@ export default function TicketProvider({children}){
     const [currentDate, setCurrentDate] = useState();
     const [session, setSession] = useState();
     const [price, setPrice] = useState(0);
+    const [ticketsData, setTicketsData] = useState([]);
 
     useEffect(() => {
       axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=a7c113a3ac789f97bba5838bcc13852a&language=en-US&page=1').then((response) => {
@@ -205,8 +206,33 @@ export default function TicketProvider({children}){
         setPrice(totalPrice * 20)
     },[currentSelected])
 
+    const BuyTicket = () =>{
+        const newticket = {
+            id: Date.now(),
+            title: detailMovie.original_title,
+            image: detailMovie.poster_path,
+            day: currentDate,
+            seats: currentSelected,
+            hour: session,
+            price: price,
+        }
+
+        if(currentDate.length > 0 && session.length > 0){
+            setTicketsData((prev) => [...prev, newticket]);
+            setCurrentDate("");
+            setSession("");
+            setCurrentSelected([]);
+            setPrice(0);
+        }
+    }
+
+    const cancelTicket = (id) =>{
+        const filteredTickets = ticketsData.filter((item) => item.id !== id);
+        setTicketsData(filteredTickets);
+    }
+
     return(
-        <TicketContext.Provider value={{movies, selectedCategory, setSelectedCategory, detailMovie, setDetailMovie, data, setSearch, search, setCurrentSelected, currentSelected, date, currentDate, setCurrentDate, session, setSession, price}}>
+        <TicketContext.Provider value={{movies, selectedCategory, setSelectedCategory, detailMovie, setDetailMovie, data, setSearch, search, setCurrentSelected, currentSelected, date, currentDate, setCurrentDate, session, setSession, price, BuyTicket, ticketsData, cancelTicket}}>
             {children}
         </TicketContext.Provider>
     )
